@@ -1,5 +1,10 @@
 
 public class CreditCardUtil {
+	public static final String AMEX = "AMEX";
+	public static final String VISA = "VISA";
+	public static final String MASTERCARD = "MasterCard";
+	public static final String DISCOVER = "Discover";
+	public static final String UNKNOWN = "Unknown";
 	
 	/**
 	 * Check if a credit card number is valid.
@@ -57,29 +62,29 @@ public class CreditCardUtil {
 		if (cardNumber.charAt(0) == '3' && len == 15) {
 			char c = cardNumber.charAt(1);
 			if (c == '4' || c == '7'){
-				return "AMEX";
+				return AMEX;
 			}
-			return "Unknown";
+			return UNKNOWN;
 		}
 		// cards with the prefix '4'
 		if (cardNumber.charAt(0) == '4') {
 			if (len == 13 || len == 16) {
-				return "VISA";
+				return VISA;
 			}
-			return "Unknown";
+			return UNKNOWN;
 		}
 		// cards with the prefix '5'
 		if (cardNumber.charAt(0) == '5' && len == 16) {
 			char c = cardNumber.charAt(1);
 			if ('1' <= c && c <= '5') {
-				return "MasterCard";
+				return MASTERCARD;
 			}
-			return "Unknown";
+			return UNKNOWN;
 		}
 		// cards with the prefix '6'
 		if (len == 16 && cardNumber.substring(0, 4).equals("6011")) {
-			return "Discover";
+			return DISCOVER;
 		}		
-		return "Unknown";
+		return UNKNOWN;
 	}
 }
